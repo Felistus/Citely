@@ -8,6 +8,7 @@ async function getHealth() {
   googlePageSpeedInsightsUrl.searchParams.set("url", targetUrl);
   googlePageSpeedInsightsUrl.searchParams.set("category", "performance");
   if (psiKey) {
+    console.log("psiKey: <<<", psiKey);
     googlePageSpeedInsightsUrl.searchParams.set("key", psiKey);
   }
 
@@ -15,6 +16,9 @@ async function getHealth() {
   const res = await fetch(url, { cache: "no-store" });
 
   if (!res.ok) {
+    const body = await res.text();
+    console.log("STATUS:>>>", res.status);
+    console.log("ERROR BODY:>>>", body);
     return {
       ok: false,
       score: null,
@@ -34,10 +38,8 @@ async function getHealth() {
 }
 
 export default async function HealthPage() {
-  const { ok, score, url } = await getHealth();
-  console.log("OK:>>>", ok);
-  console.log("SCORE:>>>", score);
-  console.log("URL:>>>", url);
+  const { ok, score } = await getHealth();
+
   return (
     <main className="p-6">
       <h1 className="text-xl font-semibold">System Health</h1>

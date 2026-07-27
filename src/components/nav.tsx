@@ -3,37 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import {
-  LayoutDashboard,
-  FileSearch,
-  Bot,
-  FileText,
-  Search,
-  Gauge,
-  Menu,
-  X,
-  type LucideIcon,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-type NavItem = {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-};
-
-const NAV_ITEMS: NavItem[] = [
-  { href: "/app", label: "Overview", icon: LayoutDashboard },
-  {
-    href: "/app/citability-scorer",
-    label: "Citability Scorer",
-    icon: FileSearch,
-  },
-  { href: "/app/ai-simulator", label: "AI Answer Simulator", icon: Bot },
-  { href: "/app/llms-txt", label: "llms.txt Studio", icon: FileText },
-  { href: "/app/serp-preview", label: "SERP Preview", icon: Search },
-  { href: "/app/web-vitals", label: "Web Vitals", icon: Gauge },
-];
+import { NAV_ITEMS } from "@/lib/data";
 
 function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
@@ -42,7 +14,9 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
     <ul className="flex flex-col gap-1">
       {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
         const isActive =
-          href === "/app" ? pathname === "/app" : pathname.startsWith(href);
+          href === "/dashboard"
+            ? pathname === "/dashboard"
+            : pathname.startsWith(href);
 
         return (
           <li key={href}>
