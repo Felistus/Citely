@@ -34,7 +34,7 @@ cp .env.example .env.local
 npx shadcn@latest add button
 ```
 
-Components are copied into `src/components/ui/` — you own the code.
+Components from Shadcn are copied into `src/components/ui/` — you own the code.
 
 ## Design tokens
 
