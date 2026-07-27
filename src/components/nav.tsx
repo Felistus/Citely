@@ -24,7 +24,11 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
   { href: "/app", label: "Overview", icon: LayoutDashboard },
-  { href: "/app/citability-scorer", label: "Citability Scorer", icon: FileSearch },
+  {
+    href: "/app/citability-scorer",
+    label: "Citability Scorer",
+    icon: FileSearch,
+  },
   { href: "/app/ai-simulator", label: "AI Answer Simulator", icon: Bot },
   { href: "/app/llms-txt", label: "llms.txt Studio", icon: FileText },
   { href: "/app/serp-preview", label: "SERP Preview", icon: Search },
@@ -50,7 +54,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
                 "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 isActive
                   ? "bg-primary text-primary-foreground"
-                  : "text-foreground/80 hover:bg-accent hover:text-accent-foreground"
+                  : "text-foreground/80 hover:bg-accent hover:text-accent-foreground",
               )}
             >
               <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
