@@ -1,10 +1,10 @@
 export default function DashboardHome() {
   return (
-    <div>
+    <section>
       <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
         Dashboard
       </h1>
       <p className="max-w-md text-muted-foreground">Coming soon</p>
-    </div>
+    </section>
   );
 }

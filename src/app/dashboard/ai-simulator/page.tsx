@@ -1,6 +1,6 @@
 export default function AiSimulatorPage() {
   return (
-    <div>
+    <section>
       <h1 className="text-2xl font-semibold tracking-tight">
         AI Answer Simulator
       </h1>
@@ -8,6 +8,6 @@ export default function AiSimulatorPage() {
         Preview how your content would appear inside a ChatGPT or Perplexity
         answer.
       </p>
-    </div>
+    </section>
   );
 }
