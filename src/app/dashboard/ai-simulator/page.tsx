@@ -8,6 +8,14 @@ export default function AiSimulatorPage() {
         Preview how your content would appear inside a ChatGPT or Perplexity
         answer.
       </p>
+      <div
+        id="chat-container"
+        role="figure"
+        aria-label="Chat container"
+        className="h-[70vh] "
+      >
+        {/* <ChatContainer scoredContent={DUMMY_SCORED_CONTENT} /> */}
+      </div>
     </section>
   );
 }
