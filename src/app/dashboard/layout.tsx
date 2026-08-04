@@ -6,9 +6,9 @@ export default function AppLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex min-h-screen flex-col md:flex-row">
+    <section className="flex min-h-screen flex-col md:flex-row">
       <Nav />
-      <main className="flex-1 px-6 py-8 md:px-10 md:py-10">{children}</main>
-    </div>
+      <main className="flex-1 px-6 py-4 md:px-10 md:py-10">{children}</main>
+    </section>
   );
 }
