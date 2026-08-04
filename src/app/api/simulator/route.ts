@@ -9,6 +9,7 @@ import {
   buildSimulatorSystemPrompt,
   getSimulatorModel,
   hasRealModelConfigured,
+  resolveSystemPrompt,
 } from "@/lib/simulator/config";
 import { createMockSimulatorStream } from "@/lib/simulator/mockStream";
 import type {
@@ -44,12 +45,19 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   try {
+    //   main
+    // const result = streamText({
+    //   model: getSimulatorModel(),
+    //   system: buildSimulatorSystemPrompt(
+    //     scoredContent.rawText,
+    //     scoredContent.breakdown,
+    //   ),
+    //   messages: await convertToModelMessages(messages as UIMessage[]),
+    // });
+
     const result = streamText({
       model: getSimulatorModel(),
-      system: buildSimulatorSystemPrompt(
-        scoredContent.rawText,
-        scoredContent.breakdown,
-      ),
+      system: resolveSystemPrompt(scoredContent),
       messages: await convertToModelMessages(messages as UIMessage[]),
     });
 
@@ -80,9 +88,9 @@ function validateRequestBody(
   if (!Array.isArray(body.messages)) {
     return "Request body must include a messages array.";
   }
-  if (!isScoredContent(body.scoredContent)) {
-    return "Request body must include scoredContent with rawText and a breakdown.";
-  }
+  //   if (!isScoredContent(body.scoredContent)) {
+  //     return "Request body must include scoredContent with rawText and a breakdown.";
+  //   }
   return null;
 }
 

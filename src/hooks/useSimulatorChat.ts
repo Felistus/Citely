@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useEffect, useRef } from "react";
+// import { useEffect, useRef } from "react";
 import type {
   ScoredContent,
   SimulatorMessage,
@@ -12,7 +12,7 @@ import type {
 import type { ChatStatus } from "@/type/index";
 
 const SIMULATOR_API_ROUTE = "/api/simulator";
-const AUTO_TRIGGER_TEXT = "Would you cite this content, and why?";
+// const AUTO_TRIGGER_TEXT = "Would you cite this content, and why?";
 
 /**
  * ViewModel for the AI Answer Simulator chat.
@@ -26,31 +26,31 @@ const AUTO_TRIGGER_TEXT = "Would you cite this content, and why?";
  *   the AI SDK's message/part types directly.
  */
 export function useSimulatorChat(
-  scoredContent: ScoredContent,
+  scoredContent?: ScoredContent,
 ): UseSimulatorChatResult {
-  const hasAutoTriggered = useRef(false);
+  // const hasAutoTriggered = useRef(false);
 
   const { messages, sendMessage, status, error, stop } = useChat({
     transport: new DefaultChatTransport({
       api: SIMULATOR_API_ROUTE,
-      body: { scoredContent },
+      body: scoredContent ? { scoredContent } : {},
     }),
   });
 
-  useEffect(() => {
-    if (hasAutoTriggered.current) return;
-    if (messages.length > 0) {
-      // A previous turn already exists (e.g. hot reload), don't
-      // re-trigger and duplicate the verdict.
-      hasAutoTriggered.current = true;
-      return;
-    }
-    hasAutoTriggered.current = true;
-    sendMessage({ text: AUTO_TRIGGER_TEXT });
+  // useEffect(() => {
+  //   if (hasAutoTriggered.current) return;
+  //   if (messages.length > 0) {
+  //     // A previous turn already exists (e.g. hot reload), don't
+  //     // re-trigger and duplicate the verdict.
+  //     hasAutoTriggered.current = true;
+  //     return;
+  //   }
+  //   hasAutoTriggered.current = true;
+  //   sendMessage({ text: AUTO_TRIGGER_TEXT });
 
-    // -- runs exactly once on mount, intentionally
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //   // -- runs exactly once on mount, intentionally
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   function sendFollowUp(text: string): void {
     const trimmed = text.trim();

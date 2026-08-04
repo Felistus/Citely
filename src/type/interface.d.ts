@@ -52,7 +52,7 @@ export interface SimulatorMessage {
 /** Request body the client sends to /app/api/simulator/route.ts. */
 export interface SimulatorRequestBody {
   messages: SimulatorMessage[];
-  scoredContent: ScoredContent;
+  scoredContent?: ScoredContent;
 }
 
 /** Return shape of the useSimulatorChat view-model hook. */

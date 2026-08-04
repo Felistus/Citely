@@ -11,8 +11,9 @@ export function ChatContainer({
   scoredContent,
   className,
 }: ChatContainerProps) {
-  const { messages, error, sendFollowUp, stop, isBusy } =
-    useSimulatorChat(scoredContent);
+  // const { messages, error, sendFollowUp, stop, isBusy } =
+  //   useSimulatorChat(scoredContent);
+  const { messages, error, sendFollowUp, stop, isBusy } = useSimulatorChat();
 
   const lastMessage = messages[messages.length - 1];
   const lastMessageText =
