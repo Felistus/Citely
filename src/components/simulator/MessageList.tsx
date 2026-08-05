@@ -1,4 +1,3 @@
-import type { MessageListProps } from "@/type/interface";
 import { MessageBubble } from "./MessageBubble";
 import { ThinkingIndicator } from "./ThinkingIndicator";
 

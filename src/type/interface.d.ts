@@ -1,21 +1,13 @@
 /**
- * interface.d.ts
- *
- * All object-shape interfaces for the AI Answer Simulator module.
- * Type aliases (unions, primitives) live in type.ts.
- * No component or hook in this project should declare its own
- * type or interface, everything is centralized here.
+ * Global interface declarations for Citely.
+ * No import/ statements here on purpose — every interface below is a
+ * global ambient type, usable in any .ts/.tsx file with zero imports.
+ * Types referenced here (InputMode, ScorerStatus, etc.) come from type.ts,
+ * which is also ambient/global for the same reason.
  */
 
-import type {
-  ChatStatus,
-  CitabilityLabel,
-  SignalId,
-  SimulatorMessageRole,
-} from "./index";
-
 /** One signal's score, as produced by the Citability Scorer. */
-export interface SignalResult {
+interface SignalResult {
   id: SignalId;
   label: string;
   score: number; // 0-100
@@ -24,39 +16,41 @@ export interface SignalResult {
 }
 
 /** Full citability breakdown for a piece of scored content. */
-export interface CitabilityBreakdown {
+interface CitabilityBreakdown {
+  // CitabilityScoreResult
   total: number; // 0-100 composite score
+  band?: ScoreBand;
   signals: SignalResult[];
 }
 
 /** The scored content the Simulator holds in context across turns. */
-export interface ScoredContent {
+interface ScoredContent {
   url?: string;
   rawText: string;
   breakdown: CitabilityBreakdown;
 }
 
 /** A single rendered chat message part (this build only renders text parts). */
-export interface SimulatorMessagePart {
+interface SimulatorMessagePart {
   type: "text";
   text: string;
 }
 
 /** A single message as rendered in the chat thread. */
-export interface SimulatorMessage {
+interface SimulatorMessage {
   id: string;
   role: SimulatorMessageRole;
   parts: SimulatorMessagePart[];
 }
 
 /** Request body the client sends to /app/api/simulator/route.ts. */
-export interface SimulatorRequestBody {
+interface SimulatorRequestBody {
   messages: SimulatorMessage[];
   scoredContent?: ScoredContent;
 }
 
 /** Return shape of the useSimulatorChat view-model hook. */
-export interface UseSimulatorChatResult {
+interface UseSimulatorChatResult {
   messages: SimulatorMessage[];
   status: ChatStatus;
   error: Error | undefined;
@@ -69,13 +63,13 @@ export interface UseSimulatorChatResult {
 }
 
 /** Props for the top-level ChatContainer (View). */
-export interface ChatContainerProps {
+interface ChatContainerProps {
   scoredContent: ScoredContent;
   className?: string;
 }
 
 /** Props for MessageList (View). */
-export interface MessageListProps {
+interface MessageListProps {
   messages: SimulatorMessage[];
   isThinking: boolean;
   /** Forwards the native scroll event; measurement lives in useAutoScroll. */
@@ -85,17 +79,17 @@ export interface MessageListProps {
 }
 
 /** Props for a single MessageBubble (View). */
-export interface MessageBubbleProps {
+interface MessageBubbleProps {
   message: SimulatorMessage;
 }
 
 /** Props for the ThinkingIndicator (View). */
-export interface ThinkingIndicatorProps {
+interface ThinkingIndicatorProps {
   label?: string;
 }
 
 /** Props for ChatInput (View). */
-export interface ChatInputProps {
+interface ChatInputProps {
   onSubmit: (text: string) => void;
   onStop: () => void;
   isBusy: boolean;
@@ -103,7 +97,58 @@ export interface ChatInputProps {
 }
 
 /** Props for the JumpToLatestButton (View). */
-export interface JumpToLatestButtonProps {
+interface JumpToLatestButtonProps {
   visible: boolean;
   onClick: () => void;
+}
+
+// ---- Citability Scorer: input components ----
+
+interface ContentModeToggleProps {
+  mode: InputMode;
+  onModeChange: (mode: InputMode) => void;
+  disabled?: boolean;
+}
+
+interface ScoreTextareaInputProps {
+  value: string;
+  onChange: (value: string) => void;
+  disabled?: boolean;
+  error?: string;
+}
+
+interface ScoreUrlInputProps {
+  value: string;
+  onChange: (value: string) => void;
+  disabled?: boolean;
+  error?: string;
+}
+
+interface ScanButtonProps {
+  status: ScorerStatus;
+  onClick: () => void;
+  disabled?: boolean;
+}
+
+interface InputErrorMessageProps {
+  message: string;
+}
+
+// ---- Citability Scorer: results components ----
+
+interface ScoreGaugeProps {
+  score: number;
+  band: ScoreBand;
+}
+
+interface ScoreBandBadgeProps {
+  band: ScoreBand;
+}
+
+interface SignalBreakdownCardProps {
+  signal: SignalScore;
+}
+
+interface SignalBreakdownListProps {
+  signals: SignalScore[];
 }

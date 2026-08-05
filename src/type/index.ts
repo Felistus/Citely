@@ -1,30 +1,24 @@
 /**
- * type.ts
- *
- * Type aliases for the AI Answer Simulator module.
- * Interfaces (object shapes) live in interface.d.ts.
- * No component or hook in this project should declare its own
- * type or interface, everything is centralized here.
+ * Global type aliases for Citely.
+ * No import/export statements here on purpose — this makes every type below
+ * a global ambient type, usable in any .ts/.tsx file with zero imports.
  */
-import { LucideIcon } from "lucide-react";
 
-export type NavItem = {
-  href: string;
-  label: string;
-  icon: LucideIcon;
-};
+type SimulatorMessageRole = "user" | "assistant" | "system";
 
-export type SimulatorMessageRole = "user" | "assistant" | "system";
+type ChatStatus = "submitted" | "streaming" | "ready" | "error";
 
-export type ChatStatus = "submitted" | "streaming" | "ready" | "error";
+type InputMode = "paste" | "url";
 
-export type CitabilityLabel =
-  | "Highly citable"
-  | "Moderately citable"
-  | "Weak"
-  | "Not citable";
+type ScorerStatus = "idle" | "loading" | "success" | "error";
 
-export type SignalId =
+type ScoreBand =
+  | "highly-citable"
+  | "moderately-citable"
+  | "weak"
+  | "not-citable";
+
+type SignalId =
   | "direct-answer"
   | "heading-hierarchy"
   | "entity-clarity"

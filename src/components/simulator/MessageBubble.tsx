@@ -1,5 +1,3 @@
-import type { MessageBubbleProps } from "@/type/interface";
-
 export function MessageBubble({ message }: MessageBubbleProps) {
   const isUser = message.role === "user";
   const text = message.parts.map((part) => part.text).join("");

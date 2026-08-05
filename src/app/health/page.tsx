@@ -8,7 +8,6 @@ async function getHealth() {
   googlePageSpeedInsightsUrl.searchParams.set("url", targetUrl);
   googlePageSpeedInsightsUrl.searchParams.set("category", "performance");
   if (psiKey) {
-    console.log("psiKey: <<<", psiKey);
     googlePageSpeedInsightsUrl.searchParams.set("key", psiKey);
   }
 

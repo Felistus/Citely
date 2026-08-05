@@ -1,5 +1,3 @@
-import type { JumpToLatestButtonProps } from "@/type/interface";
-
 export function JumpToLatestButton({
   visible,
   onClick,

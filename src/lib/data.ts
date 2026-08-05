@@ -1,4 +1,4 @@
-import { NavItem } from "@/type";
+import { NavItem } from "@/type/type";
 import {
   Bot,
   FileSearch,

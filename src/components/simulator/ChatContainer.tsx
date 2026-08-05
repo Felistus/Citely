@@ -2,7 +2,6 @@
 
 import { useSimulatorChat } from "@/hooks/useSimulatorChat";
 import { useAutoScroll } from "@/hooks/useAutoScroll";
-import type { ChatContainerProps } from "@/type/interface";
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
 import { JumpToLatestButton } from "./JumpToLatestButton";
