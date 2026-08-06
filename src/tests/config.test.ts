@@ -3,11 +3,10 @@ import {
   buildSimulatorSystemPrompt,
   hasRealModelConfigured,
 } from "@/lib/simulator/config";
-import type { CitabilityBreakdown } from "@/types/interface";
 
 const BREAKDOWN: CitabilityBreakdown = {
   total: 55,
-  label: "Weak",
+  band: "weak",
   signals: [
     {
       id: "entity-clarity",
@@ -35,7 +34,7 @@ describe("buildSimulatorSystemPrompt", () => {
   it("includes the composite score and label", () => {
     const prompt = buildSimulatorSystemPrompt("content", BREAKDOWN);
     expect(prompt).toContain("55/100");
-    expect(prompt).toContain("Weak");
+    expect(prompt).toContain("weak");
   });
 });
 

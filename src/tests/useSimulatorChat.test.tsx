@@ -1,7 +1,6 @@
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen, act } from "@testing-library/react";
 import { useSimulatorChat } from "@/hooks/useSimulatorChat";
-import type { ScoredContent } from "@/types/interface";
 
 const sendMessageMock = vi.fn();
 const stopMock = vi.fn();
@@ -41,11 +40,12 @@ vi.mock("ai", async (importOriginal) => {
 
 const SCORED_CONTENT: ScoredContent = {
   rawText: "content",
-  breakdown: { total: 50, label: "Weak", signals: [] },
+  breakdown: { total: 50, band: "weak", signals: [] },
 };
 
 function TestHarness({ scoredContent }: { scoredContent: ScoredContent }) {
-  const { messages, isBusy, sendFollowUp, stop } = useSimulatorChat(scoredContent);
+  const { messages, isBusy, sendFollowUp, stop } =
+    useSimulatorChat(scoredContent);
   return (
     <div>
       <div data-testid="message-count">{messages.length}</div>
@@ -73,7 +73,9 @@ describe("useSimulatorChat", () => {
 
   it("does not auto-trigger again if messages already exist on mount", () => {
     mockChatState = {
-      messages: [{ id: "1", role: "assistant", parts: [{ type: "text", text: "hi" }] }],
+      messages: [
+        { id: "1", role: "assistant", parts: [{ type: "text", text: "hi" }] },
+      ],
       status: "ready",
       error: undefined,
     };

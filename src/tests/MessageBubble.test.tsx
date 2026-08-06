@@ -1,16 +1,13 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MessageBubble } from "@/components/simulator/MessageBubble";
-import type { SimulatorMessage } from "@/types/interface";
 
 describe("MessageBubble", () => {
   it("renders the joined text of all text parts", () => {
     const message: SimulatorMessage = {
       id: "1",
       role: "assistant",
-      parts: [
-        { type: "text", text: "Yes, I would cite this." },
-      ],
+      parts: [{ type: "text", text: "Yes, I would cite this." }],
     };
     render(<MessageBubble message={message} />);
     expect(screen.getByText("Yes, I would cite this.")).toBeInTheDocument();
@@ -23,7 +20,9 @@ describe("MessageBubble", () => {
       parts: [{ type: "text", text: "Why not?" }],
     };
     render(<MessageBubble message={userMessage} />);
-    expect(screen.getByRole("article", { name: "Your message" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("article", { name: "Your message" }),
+    ).toBeInTheDocument();
   });
 
   it("labels an assistant message as a Simulator response for screen readers", () => {

@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { createMockSimulatorStream } from "@/lib/simulator/mockStream";
-import { MOCK_FOLLOW_UP_REPLY, MOCK_VERDICT_REPLY } from "@/lib/simulator/mockReplies";
-import type { SimulatorMessage } from "@/types/interface";
+import {
+  MOCK_FOLLOW_UP_REPLY,
+  MOCK_VERDICT_REPLY,
+} from "@/lib/simulator/mockReplies";
 
 /**
  * Reads every chunk off a UI message stream and joins the deltas from
@@ -28,13 +30,29 @@ async function collectStreamedText(
 }
 
 const USER_TURN_ONE: SimulatorMessage[] = [
-  { id: "1", role: "user", parts: [{ type: "text", text: "Would you cite this?" }] },
+  {
+    id: "1",
+    role: "user",
+    parts: [{ type: "text", text: "Would you cite this?" }],
+  },
 ];
 
 const AFTER_ONE_ASSISTANT_TURN: SimulatorMessage[] = [
-  { id: "1", role: "user", parts: [{ type: "text", text: "Would you cite this?" }] },
-  { id: "2", role: "assistant", parts: [{ type: "text", text: MOCK_VERDICT_REPLY }] },
-  { id: "3", role: "user", parts: [{ type: "text", text: "Why not the second paragraph?" }] },
+  {
+    id: "1",
+    role: "user",
+    parts: [{ type: "text", text: "Would you cite this?" }],
+  },
+  {
+    id: "2",
+    role: "assistant",
+    parts: [{ type: "text", text: MOCK_VERDICT_REPLY }],
+  },
+  {
+    id: "3",
+    role: "user",
+    parts: [{ type: "text", text: "Why not the second paragraph?" }],
+  },
 ];
 
 describe("createMockSimulatorStream", () => {

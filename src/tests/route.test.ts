@@ -1,12 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { isScoredContent, validateRequestBody } from "@/app/api/simulator/route";
-import type { ScoredContent, SimulatorRequestBody } from "@/types/interface";
+import {
+  isScoredContent,
+  validateRequestBody,
+} from "@/app/api/simulator/route";
 
 const VALID_SCORED_CONTENT: ScoredContent = {
   rawText: "Some article text.",
   breakdown: {
     total: 70,
-    label: "Moderately citable",
+    band: "moderately-citable",
     signals: [
       {
         id: "direct-answer",
