@@ -1,4 +1,3 @@
-import { CitabilityBreakdown, ScoredContent } from "@/type/interface";
 import { google } from "@ai-sdk/google";
 // import { anthropic } from "@ai-sdk/anthropic";
 import type { LanguageModel } from "ai";
