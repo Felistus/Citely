@@ -152,3 +152,13 @@ interface SignalBreakdownCardProps {
 interface SignalBreakdownListProps {
   signals: SignalScore[];
 }
+
+// ---- Overview page ----
+
+interface ModuleCardProps {
+  module: ModuleSummary;
+}
+
+interface ModuleGridProps {
+  modules: ModuleSummary[];
+}

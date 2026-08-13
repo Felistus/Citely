@@ -18,6 +18,14 @@ declare global {
     label: string;
     icon: LucideIcon;
   };
+
+  type ModuleSummary = {
+    id: string;
+    title: string;
+    description: string;
+    href: string;
+    icon: LucideIcon;
+  };
 }
 
 export {};
