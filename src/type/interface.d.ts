@@ -162,3 +162,35 @@ interface ModuleCardProps {
 interface ModuleGridProps {
   modules: ModuleSummary[];
 }
+
+// ---- Shared: scroll-reveal ----
+
+interface UseInViewResult {
+  ref: React.RefObject<HTMLDivElement | null>;
+  isVisible: boolean;
+}
+
+interface RevealOnScrollProps {
+  children: React.ReactNode;
+  className?: string;
+  delayMs?: number;
+}
+
+// ---- Landing page ----
+
+interface ProcessStep {
+  id: string;
+  order: number;
+  title: string;
+  description: string;
+}
+
+interface HowItWorksStepProps {
+  step: ProcessStep;
+  delayMs?: number;
+}
+
+interface FeatureCardProps {
+  feature: ModuleSummary;
+  delayMs?: number;
+}

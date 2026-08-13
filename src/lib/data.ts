@@ -61,3 +61,27 @@ export const MODULES: ModuleSummary[] = [
     icon: Gauge,
   },
 ];
+
+export const STEPS: ProcessStep[] = [
+  {
+    id: "paste",
+    order: 1,
+    title: "Paste or link",
+    description:
+      "Drop in your content, or the URL of a page you've already published.",
+  },
+  {
+    id: "score",
+    order: 2,
+    title: "Get a citability score",
+    description:
+      "See a 0-100 score with a full signal-by-signal breakdown, not just a number.",
+  },
+  {
+    id: "fix",
+    order: 3,
+    title: "Fix what's weak",
+    description:
+      "Preview how AI would cite the result, then tighten the parts holding your score back.",
+  },
+];
