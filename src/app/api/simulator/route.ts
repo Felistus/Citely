@@ -12,11 +12,6 @@ import {
   resolveSystemPrompt,
 } from "@/lib/simulator/config";
 import { createMockSimulatorStream } from "@/lib/simulator/mockStream";
-import type {
-  ScoredContent,
-  SimulatorMessage,
-  SimulatorRequestBody,
-} from "@/type/interface";
 
 export const maxDuration = 30;
 
@@ -108,4 +103,3 @@ function isScoredContent(value: unknown): value is ScoredContent {
 // Re-exported only so tests can import and unit-test validation logic
 // in isolation, without spinning up a full request.
 export { validateRequestBody, isScoredContent };
-export type { SimulatorMessage };

@@ -1,6 +1,5 @@
 import { createUIMessageStream, generateId } from "ai";
 import { MOCK_FOLLOW_UP_REPLY, MOCK_VERDICT_REPLY } from "./mockReplies";
-import { SimulatorMessage } from "@/type/interface";
 
 /**
  * IMPORTANT: this module intentionally does NOT import from "ai/test".

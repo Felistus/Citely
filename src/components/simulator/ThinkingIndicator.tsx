@@ -1,5 +1,3 @@
-import type { ThinkingIndicatorProps } from "@/type/interface";
-
 export function ThinkingIndicator({
   label = "Thinking",
 }: ThinkingIndicatorProps) {

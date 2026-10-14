@@ -3,13 +3,6 @@
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 // import { useEffect, useRef } from "react";
-import type {
-  ScoredContent,
-  SimulatorMessage,
-  SimulatorMessagePart,
-  UseSimulatorChatResult,
-} from "@/type/interface";
-import type { ChatStatus } from "@/type/index";
 
 const SIMULATOR_API_ROUTE = "/api/simulator";
 // const AUTO_TRIGGER_TEXT = "Would you cite this content, and why?";

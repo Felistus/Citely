@@ -1,7 +1,6 @@
 "use client";
 
 import { ChangeEvent, useState, type KeyboardEvent } from "react";
-import type { ChatInputProps } from "@/type/interface";
 
 const INPUT_ID = "simulator-chat-input";
 

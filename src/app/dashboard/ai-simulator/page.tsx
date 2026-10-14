@@ -1,5 +1,4 @@
 import { ChatContainer } from "@/components/simulator/ChatContainer";
-import { ScoredContent } from "@/type/interface";
 
 const DUMMY_SCORED_CONTENT: ScoredContent = {
   url: "https://example.com/what-is-llms-txt",
